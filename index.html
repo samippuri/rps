@@ -1,0 +1,82 @@
+<script>
+
+    humanScore = 0;
+    computerScore = 0;
+
+    let getComputerChoice = () => {
+        let rand = Math.random();
+        if (rand < .33)
+        {
+            return "rock";
+        }
+        else if (rand < .66)
+        {
+            return "paper";
+        }
+        return "scissors";
+    }
+
+    let getHumanChoice = () => {
+        let choice = prompt("Pick rock, paper, or scissors!");
+        choice = choice.toLowerCase();
+
+        while (choice != "rock" && choice != "paper" && choice != "scissors")
+        {
+            choice = prompt("Invalid input, please pick either rock, paper, or scissors!");
+        }
+
+        return choice;
+    }
+
+    let playRound = (humanChoice, computerChoice) => {
+
+        if (humanChoice == computerChoice)
+        {
+            console.log("Tie! No one wins.");
+        }
+        else if (humanChoice == "rock")
+        {
+            if (computerChoice == "paper")
+            {
+                console.log("You lose! paper beats rock :(");
+                computerScore += 1;
+            }
+            else
+            {
+                console.log("You win! rock beats scissors :)");
+                humanScore += 1;
+            }
+        }
+        else if (humanChoice == "paper")
+        {
+            if (computerChoice == "rock")
+            {
+                console.log("You win! paper beats rock :)");
+                humanScore += 1;
+            }
+            else 
+            {
+                console.log("You lose! scissors beats paper :(");
+                computerScore += 1;
+            }
+        }
+        else 
+        {
+            if (computerChoice == "rock")
+            {
+                console.log("You lose! rock beats scissors :(");
+                computerScore += 1;
+            }
+            else 
+            {
+                console.log("You win! scissors beats paper :)");
+                humanScore += 1;
+            }
+        }
+    }
+    
+    let human = getHumanChoice();
+    let computer = getComputerChoice();
+    playRound(human, computer);
+
+</script>
