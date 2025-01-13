@@ -75,8 +75,30 @@
         }
     }
     
-    let human = getHumanChoice();
-    let computer = getComputerChoice();
-    playRound(human, computer);
+    let playGame = () => {
+
+        for (let i = 0; i < 5; i++)
+        {
+            let cpuChoice = getComputerChoice();
+            let humanChoice = getHumanChoice();
+
+            playRound(cpuChoice, humanChoice);
+        }
+
+        if (computerScore > humanScore)
+        {
+            console.log("You lost more games than the cpu, CPU wins!! :(");
+        }
+        else if (computerScore < humanScore)
+        {
+            console.log("You won more games than the cpu, You Win!!! :)");
+        }
+        else
+        {
+            console.log("You won the same amount of times as the cpu, the game is tied!! ^_^");
+        }
+    }
+
+    playGame();
 
 </script>
